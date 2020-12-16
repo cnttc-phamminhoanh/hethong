@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Map</title>
+  <script src='https://code.jquery.com/jquery-3.5.1.slim.min.js', integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', crossorigin='anonymous'></script>
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js", integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV", crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">My Map</div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="create.html">Create <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Other
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Edit</a>
+            <a class="dropdown-item" href="delete.html">Delete</a>
+          </div>
+      </ul>
+  </nav>
+  
+  <br/>
+
+    <div id="edit" class="container-fluid bg" style="display: none">
+      <div class="row justify-content-center">
+          <div class="col-md-4 col-sm-6 col-xs-12 row-container">
+              <form>
+                  <h1>Edit Coordinates</h1>
+
+      
+
+                  <div class="form-group">
+                    <label for="name">Name </label>
+                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter name" value="" />
+                      <p class="emailError"></p>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="label" for="password">Latitude</label>
+                    <input class="form-control" id="latitude" name="latitude" type="number" step=any placeholder="Enter latitude" value="" />
+                      <p class="passwordError"></p>   
+                  </div>
+
+                  <div class="form-group">
+                    <label class="label" for="password">Longitude</label>
+                    <input class="form-control" id="longitude" name="longitude" type="number" step=any placeholder="Enter longitude" value="" />
+                      <p class="passwordError"></p>   
+                  </div>
+
+                  <div class="form-group">
+                    <label class="label" for="content">Content</label>
+                    <input class="form-control" id="content" name="content" type="content" placeholder="Enter content" value="" />
+                      <p class="passwordError"></p>   
+                  </div>
+                  
+              </form>
+              <button type="reset"id="btnSave"class="btn btn-success btn-block my-3">Save</button>
+              
+          </div>
+      </div>
+    </div>
+
+  <h1 style="margin-left:525px">Coordinates List</h1>
+
+  <br/>
+  <br/>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Latitude</th>
+        <th scope="col">Longitude</th>
+
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody id="rowCoordiantes">
+      
+      
+    </tbody>
+  </table>
+</body>
+
+  <script defer src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>  
+
+  <script type="text/javascript">
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyDM75D2qEHH44rI1l8yH8NLxAqnTKmF2b0",
+        authDomain: "mymap-293014.firebaseapp.com",
+        databaseURL: "https://mymap-293014-default-rtdb.firebaseio.com",
+        projectId: "mymap-293014",
+        storageBucket: "mymap-293014.appspot.com",
+        messagingSenderId: "304410142305",
+        appId: "1:304410142305:web:d9037bf4cfbf453182ac20",
+        measurementId: "G-C53DLFHTQ1"
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      firebase.database().ref("coordinates/").on("value",function(snapshot){
+        //console.log(snapshot.val());
+        
+        var getData = snapshot.val();
+
+        // var content = getData.map(function(ele){
+        //   return '<tr><th scope="row">' + ele.code + '</th><td>' + ele.name + '</td><td>' + ele.lat + '</td><td>' + ele.lng + '</td><td><button id="'+ i + '"onClick="reply_click()"class="btn btn-danger">Delete</button></td></tr>'
+        // });
+
+        var str='';
+        for(var i=0;i<getData.length;i++){
+          if(getData[i]!=undefined){
+             str+='<tr><th scope="row">' + getData[i].code + '</th><td>' + getData[i].name + '</td><td>' + getData[i].lat + '</td><td>' + getData[i].lng + '</td><td><button id="'+ i + '"onClick="reply_click()"class="btn btn-success">Edit</button></td></tr>'
+          }    
+        }
+        
+        var getUl = document.getElementById('rowCoordiantes');
+
+        getUl.innerHTML = str;
+
+      });
+
+
+      function reply_click()
+      {
+        document.getElementById('edit').style.display = 'inline';
+        
+        firebase.initializeApp(firebaseConfig);
+
+        firebase.database().ref("coordinates/"+event.srcElement.id).on("value",function(snapshot){
+          console.log(snapshot.val());
+
+          document.getElementById('name').value = snapshot.val().name;
+          document.getElementById('latitude').value = snapshot.val().lat;
+          document.getElementById('longitude').value = snapshot.val().lng;
+          document.getElementById('content').value = snapshot.val().content;
+      
+        });        
+        var index = event.srcElement.id;
+
+      //alert(event.srcElement.id);
+      
+      document.getElementById("btnSave").onclick = function(){
+          
+        //var code = document.getElementById('sel1').value;
+        var name = document.getElementById('name').value;
+        var lat = document.getElementById('latitude').value;
+        var long = document.getElementById('longitude').value;
+        var content = document.getElementById('content').value;
+
+        if(name!=''&&lat!=''&&long!=''&&content!=''){
+          // firebase.initializeApp(firebaseConfig);
+
+          firebase.database().ref("coordinates/"+index).update({
+            name:name,
+            lat:lat,
+            lng:long,
+            content:content
+          })
+          .then(function(){
+            alert("Update success !");
+            window.location.href = "http://localhost:9080/delete.html";
+          });
+        }
+        // document.getElementById('edit').style.display = 'none';
+      }
+
+      
+
+    }
+  </script>
+</body>
+</html>

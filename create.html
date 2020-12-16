@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Map</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js", integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV", crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
+  
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">My Map</div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Create <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Other
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="edit.html">Edit</a>
+            <a class="dropdown-item" href="delete.html">Delete</a>
+          </div>
+      </ul>
+    </div>
+    </nav>
+    <br/>
+    <br/>
+    <div class="container-fluid bg">
+      <div class="row justify-content-center">
+          <div class="col-md-4 col-sm-6 col-xs-12 row-container">
+              <form>
+                  <h1>Create Coordinates</h1>
+
+                  <div class="form-goup">  
+                    <label for="code">Code </label>
+                    <select class="form-control" id="sel1">
+                      <option value="nh">Bank</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="name">Name </label>
+                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter name" value="" />
+                      <p class="emailError"></p>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="label" for="password">Latitude</label>
+                    <input class="form-control" id="latitude" name="latitude" type="number" step=any placeholder="Enter latitude" value="" />
+                      <p class="passwordError"></p>   
+                  </div>
+
+                  <div class="form-group">
+                    <label class="label" for="password">Longitude</label>
+                    <input class="form-control" id="longitude" name="longitude" type="number" step=any placeholder="Enter longitude" value="" />
+                      <p class="passwordError"></p>   
+                  </div>
+
+                  <div class="form-group">
+                    <label class="label" for="content">Content</label>
+                    <input class="form-control" id="content" name="content" type="content" placeholder="Enter content" value="" />
+                      <p class="passwordError"></p>   
+                  </div>
+                  
+              </form>
+              <button type="reset"id="btnCreate"class="btn btn-success btn-block my-3">Create</button>
+              
+          </div>
+      </div>
+    </div>
+
+    <script defer src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+
+    <script type="text/javascript">
+      var l = 0;
+      var firebaseConfig = {
+        apiKey: "AIzaSyDM75D2qEHH44rI1l8yH8NLxAqnTKmF2b0",
+        authDomain: "mymap-293014.firebaseapp.com",
+        databaseURL: "https://mymap-293014-default-rtdb.firebaseio.com",
+        projectId: "mymap-293014",
+        storageBucket: "mymap-293014.appspot.com",
+        messagingSenderId: "304410142305",
+        appId: "1:304410142305:web:d9037bf4cfbf453182ac20",
+        measurementId: "G-C53DLFHTQ1"
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      firebase.database().ref("coordinates/").on("value",function(snapshot){
+        console.log(snapshot.val());
+        l = snapshot.val().length;
+      });
+
+      document.getElementById("btnCreate").onclick = function(){
+        var code = document.getElementById('sel1').value;
+        var name = document.getElementById('name').value;
+        var lat = document.getElementById('latitude').value;
+        var long = document.getElementById('longitude').value;
+        var content = document.getElementById('content').value;
+
+        if(code!=''&&name!=''&&lat!=''&&long!=''&&content!=''){
+          firebase.initializeApp(firebaseConfig);
+
+          firebase.database().ref("coordinates/"+l).set({
+            code:code,
+            name:name,
+            lat:lat,
+            lng:long,
+            content:content
+          })
+          .then(function(){
+            alert("Create success !");
+            // document.getElementById('sel1').value = "";
+            // document.getElementById('name').value = "";
+            // document.getElementById('latitude').value = "";
+            // document.getElementById('longitude').value = "";
+            // document.getElementById('content').value = "";
+            window.location.href = "http://localhost:9080/edit.html";
+          });
+        }
+        
+
+
+      }
+
+    </script>
+
+
+  </body>
+
+</body>
+</html>

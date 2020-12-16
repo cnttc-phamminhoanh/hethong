@@ -1,0 +1,102 @@
+[debug] [2020-12-16T14:05:30.236Z] ----------------------------------------------------------------------
+[debug] [2020-12-16T14:05:30.238Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\USER\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-12-16T14:05:30.239Z] CLI Version:   9.0.0
+[debug] [2020-12-16T14:05:30.239Z] Platform:      win32
+[debug] [2020-12-16T14:05:30.239Z] Node Version:  v12.18.3
+[debug] [2020-12-16T14:05:30.240Z] Time:          Wed Dec 16 2020 21:05:30 GMT+0700 (GMT+07:00)
+[debug] [2020-12-16T14:05:30.240Z] ----------------------------------------------------------------------
+[debug] [2020-12-16T14:05:30.240Z] 
+[debug] [2020-12-16T14:05:30.246Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-16T14:05:30.247Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\USER\Desktop\dl
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2020-12-16T14:05:56.457Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects?pageSize=100  
+ 
+[debug] [2020-12-16T14:05:57.391Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 14:05:58 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  Using project mymap-293014 (MyMap) 
+[info] 
+=== Database Setup
+[info] i  database: ensuring required API firebasedatabase.googleapis.com is enabled... 
+[debug] [2020-12-16T14:06:05.253Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/mymap-293014/services/firebasedatabase.googleapis.com  
+ 
+[debug] [2020-12-16T14:06:06.668Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 14:06:07 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] +  database: required API firebasedatabase.googleapis.com is enabled 
+[info] 
+[debug] [2020-12-16T14:06:06.679Z] >>> HTTP REQUEST GET https://firebasedatabase.googleapis.com/v1beta/projects/mymap-293014/locations/-/instances/mymap-293014-default-rtdb  
+ 
+[debug] [2020-12-16T14:06:07.556Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 14:06:08 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] Firebase Realtime Database Security Rules allow you to define how your data should be
+[info] structured and when your data can be read from and written to.
+[info] 
+[debug] [2020-12-16T14:08:33.743Z] >>> HTTP REQUEST GET https://mymap-293014-default-rtdb.firebaseio.com/.settings/rules.json  
+ 
+[debug] [2020-12-16T14:08:35.434Z] <<< HTTP RESPONSE 200 {"server":"nginx","date":"Wed, 16 Dec 2020 14:08:36 GMT","content-type":"application/json; charset=utf-8","content-length":"121","connection":"keep-alive","access-control-allow-origin":"*","cache-control":"no-cache","strict-transport-security":"max-age=31556926; includeSubDomains; preload"}
+[info] +  Database Rules for mymap-293014-default-rtdb have been written to {. 
+[info] Future modifications to { will update Realtime Database Security Rules when you run
+[info] firebase deploy.
+[info] 
+=== Firestore Setup
+[debug] [2020-12-16T14:08:35.449Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/mymap-293014/services/firestore.googleapis.com  
+ 
+[debug] [2020-12-16T14:08:37.245Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 14:08:38 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-16T14:08:37.246Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/mymap-293014  
+ 
+[debug] [2020-12-16T14:08:37.997Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 14:08:39 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-16T14:08:37.997Z] database_type: CLOUD_FIRESTORE
+[debug] [2020-12-16T14:08:37.998Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-16T14:08:37.999Z] > authorizing via signed-in user
+[debug] [2020-12-16T14:08:37.999Z] [iam] checking project mymap-293014 for permissions ["firebase.projects.get"]
+[debug] [2020-12-16T14:08:38.000Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/mymap-293014:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2020-12-16T14:08:39.333Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 14:08:40 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1016","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2020-12-16T14:08:49.022Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/mymap-293014/releases?pageSize=10&pageToken=  
+ 
+[debug] [2020-12-16T14:08:50.242Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 14:08:51 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-16T14:08:50.244Z] Found ruleset: projects/mymap-293014/rulesets/5f736649-0b38-41f2-a671-cc2fa29394ed
+[debug] [2020-12-16T14:08:50.246Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/mymap-293014/rulesets/5f736649-0b38-41f2-a671-cc2fa29394ed  
+ 
+[debug] [2020-12-16T14:08:51.416Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 14:08:52 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2020-12-16T14:08:58.603Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1/projects/mymap-293014/databases/(default)/collectionGroups/-/indexes  
+ 
+[debug] [2020-12-16T14:08:58.603Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1/projects/mymap-293014/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false  
+ 
+[debug] [2020-12-16T14:08:59.248Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 14:09:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-16T14:08:59.473Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 14:09:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-16T14:08:59.758Z] Error: EISDIR: illegal operation on a directory, open 'C:\Users\USER\Desktop\dl'
+    at Object.openSync (fs.js:462:3)
+    at Object.writeFileSync (fs.js:1362:35)
+    at Config.writeProjectFile (C:\Users\USER\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:156:8)
+    at C:\Users\USER\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\firestore\indexes.js:51:27
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at async Object.doSetup [as firestore] (C:\Users\USER\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\firestore\index.js:36:5)
+    at async init (C:\Users\USER\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\index.js:19:9)
+[error] 
+[error] Error: An unexpected error has occurred.
